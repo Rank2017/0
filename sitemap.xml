@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://artifact.me/universal-search-2-google-custom-search-engine/</loc>
+    
+    <lastmod>2017-03-28T07:21:14.075Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://artifact.me/universal-search-5-azure-search/</loc>
+    
+    <lastmod>2017-03-28T07:20:49.191Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://artifact.me/universal-search-4-algolia-search/</loc>
+    
+    <lastmod>2017-03-28T07:19:36.402Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://artifact.me/universal-search-1-common-logic/</loc>
-    
-    <lastmod>2017-03-24T20:46:28.528Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://artifact.me/create-virtual-hosts-on-mamp/</loc>
-    
-    <lastmod>2017-03-24T20:46:28.528Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://artifact.me/hexo-theme-fact/</loc>
-    
-    <lastmod>2017-03-24T20:46:28.528Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://artifact.me/hexo-theme-typescript/</loc>
     
     <lastmod>2017-03-24T20:46:28.528Z</lastmod>
     
@@ -58,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://artifact.me/universal-search-2-google-custom-search-engine/</loc>
+    <loc>http://artifact.me/create-virtual-hosts-on-mamp/</loc>
     
     <lastmod>2017-03-24T20:46:28.528Z</lastmod>
     
@@ -72,14 +72,14 @@
   </url>
   
   <url>
-    <loc>http://artifact.me/universal-search-4-algolia-search/</loc>
+    <loc>http://artifact.me/hexo-theme-fact/</loc>
     
     <lastmod>2017-03-24T20:46:28.528Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://artifact.me/universal-search-5-azure-search/</loc>
+    <loc>http://artifact.me/hexo-theme-typescript/</loc>
     
     <lastmod>2017-03-24T20:46:28.528Z</lastmod>
     
