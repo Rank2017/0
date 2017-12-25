@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://artifact.me/universal-search-1-common-logic/</loc>
+    <loc>http://artifact.me/hexo-theme-element/</loc>
+    
+    <lastmod>2017-12-25T09:13:51.507Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://artifact.me/simple-gulp-configuration-for-angular-applications/</loc>
     
     <lastmod>2017-12-20T07:04:08.167Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://artifact.me/simple-gulp-configuration-for-angular-applications/</loc>
+    <loc>http://artifact.me/universal-search-1-common-logic/</loc>
     
     <lastmod>2017-12-20T07:04:08.167Z</lastmod>
     
@@ -51,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://artifact.me/ghost-theme-typescript/</loc>
+    <loc>http://artifact.me/create-virtual-hosts-on-mamp/</loc>
     
     <lastmod>2017-12-20T07:04:08.163Z</lastmod>
     
@@ -86,7 +93,7 @@
   </url>
   
   <url>
-    <loc>http://artifact.me/create-virtual-hosts-on-mamp/</loc>
+    <loc>http://artifact.me/ghost-theme-typescript/</loc>
     
     <lastmod>2017-12-20T07:04:08.163Z</lastmod>
     
