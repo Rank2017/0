@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://artifact.me/"/>
-  <updated>2017-12-25T09:13:51.507Z</updated>
+  <updated>2017-12-25T09:17:42.868Z</updated>
   <id>http://artifact.me/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>hexo-theme-element</title>
+    <title>Hexo Theme Element</title>
     <link href="http://artifact.me/hexo-theme-element/"/>
     <id>http://artifact.me/hexo-theme-element/</id>
     <published>2017-12-25T09:13:51.000Z</published>
-    <updated>2017-12-25T09:13:51.507Z</updated>
+    <updated>2017-12-25T09:17:42.868Z</updated>
     
     <content type="html"><![CDATA[<p><strong>Element</strong> is another minimal theme for <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>.</p><h2 id="Dependencies"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies</h2><p>This theme depends on the following Hexo plugins:</p><ul><li>hexo-generator-tag</li><li>hexo-generator-feed</li><li>hexo-renderer-ejs</li><li>hexo-renderer-less</li><li>hexo-renderer-marked</li><li>hexo-pagination</li><li>hexo-all-minifier</li><li>hexo-autoprefixer</li><li>hexo-front-matter</li></ul><p>For local search, you also need hexo-generator-json-content and add configuration to your global <code>_config.yml</code> if needed, refer to <a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="noopener">hexo-generator-json-content</a> github repository.</p><h2 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h2><p>Element is customizable via the <code>_config.yml</code> in the theme directory.</p><p>Element also depends on the global <code>_config.yml</code>. For example:</p><ul><li>Set <code>disqus_shortname</code> field to your disqus short name.</li><li>Set <code>theme</code> field to <code>hexo-theme-element</code>.</li><li>Set <code>title</code>, <code>url</code>, <code>author</code> and <code>description</code>.</li></ul><p>In addition to these settings, you may also want to edit/replace the following files:</p><ul><li>Replace the author avatar: <code>source/img/avatar.png</code>.</li><li>The font used on <a href="https://artifact.me">Artifact.me</a> is Futura PT. I include it via Adobe Typekit. You need to use your own web font service, or go with the default Lato via Google Font. Details in <code>layout/_partial/head.ejs</code>.</li></ul><p>This theme currently supports 4 search services:</p><ul><li>Google custom search</li><li>Hexo Local search (hexo-json-content)</li><li>Algolia search</li><li>Microsoft Azure search</li></ul><p>Setup guide for searching is availble here: <a href="https://github.com/artchen/universal-search" target="_blank" rel="noopener">universal-search</a>.</p><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="https://artifact.me">Artifact.me</a></p><h2 id="Copyright"><a href="#Copyright" class="headerlink" title="Copyright"></a>Copyright</h2><p>Public resources used in this theme:</p><ul><li><a href="https://icomoon.io/" target="_blank" rel="noopener">icomoon</a></li><li><a href="https://necolas.github.io/normalize.css/" target="_blank" rel="noopener">normalize.css</a></li><li><a href="https://fonts.google.com/specimen/Lato" target="_blank" rel="noopener">Google Fonts - Lato</a></li></ul><p>Copyright © Art Chen</p><p>Please do not remove the “Theme by Art Chen” text and links.</p>]]></content>
     
