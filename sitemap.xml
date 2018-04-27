@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://artifact.me/wordpress-with-nginx-and-php7-on-aws-ec2-rds/</loc>
+    
+    <lastmod>2018-04-27T16:11:17.538Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://artifact.me/install-ghost-v1-on-heroku/</loc>
     
     <lastmod>2018-04-27T08:05:49.198Z</lastmod>
@@ -65,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://artifact.me/hexo-theme-fact/</loc>
-    
-    <lastmod>2017-12-20T07:04:08.163Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://artifact.me/hexo-theme-typescript/</loc>
     
     <lastmod>2017-12-20T07:04:08.163Z</lastmod>
@@ -101,6 +101,13 @@
   
   <url>
     <loc>http://artifact.me/ghost-theme-typescript/</loc>
+    
+    <lastmod>2017-12-20T07:04:08.163Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://artifact.me/hexo-theme-fact/</loc>
     
     <lastmod>2017-12-20T07:04:08.163Z</lastmod>
     

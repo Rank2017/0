@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://artifact.me/"/>
-  <updated>2018-04-27T08:05:49.198Z</updated>
+  <updated>2018-04-27T16:11:17.538Z</updated>
   <id>http://artifact.me/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Wordpress with Nginx and PHP7 on AWS EC2 and RDS</title>
+    <link href="http://artifact.me/wordpress-with-nginx-and-php7-on-aws-ec2-rds/"/>
+    <id>http://artifact.me/wordpress-with-nginx-and-php7-on-aws-ec2-rds/</id>
+    <published>2018-04-27T16:11:17.000Z</published>
+    <updated>2018-04-27T16:11:17.538Z</updated>
+    
+    <content type="html"><![CDATA[<p>I recently installed wordpress on my EC2 host. Regret a lot that I didn’t note down the steps right away. Now I have to rely on my poor goldfish memory.</p><h1 id="Install-Packages"><a href="#Install-Packages" class="headerlink" title="Install Packages"></a>Install Packages</h1><p>Note:</p><ul><li>I use Amazon Linux.</li><li>I didn’t install mysql on localhost because I have an RDS instance.</li><li>My host already has nginx installed.</li></ul><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y php70 php70-fpm php70-gd</span><br><span class="line">sudo chkconfig php-fpm-7.0 on</span><br></pre></td></tr></table></figure><h1 id="Configure-PHP-FPM"><a href="#Configure-PHP-FPM" class="headerlink" title="Configure PHP-FPM"></a>Configure PHP-FPM</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/php-fpm-7.0.d/www.conf</span><br></pre></td></tr></table></figure><p>Make sure these are present and uncommented:</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user = nginx</span><br><span class="line">group = nginx</span><br><span class="line">listen = 127.0.0.1:9000</span><br></pre></td></tr></table></figure><h1 id="Download-Wordpress"><a href="#Download-Wordpress" class="headerlink" title="Download Wordpress"></a>Download Wordpress</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/www</span><br><span class="line">wget https://wordpress.org/latest.tar.gz</span><br><span class="line">tar xvf latest.tar.gz</span><br></pre></td></tr></table></figure><p>Modify permissions. Grant folders 755 and files 644.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo chown nginx:nginx -R /var/www/wordpress</span><br><span class="line">sudo find /var/www/wordpress -<span class="built_in">type</span> d -<span class="built_in">exec</span> chmod 755 &#123;&#125; \;</span><br><span class="line">sudo find /var/www/wordpress -<span class="built_in">type</span> f -<span class="built_in">exec</span> chmod 644 &#123;&#125; \;</span><br></pre></td></tr></table></figure><h1 id="Configure-Nginx"><a href="#Configure-Nginx" class="headerlink" title="Configure Nginx"></a>Configure Nginx</h1><p>Create a new nginx site configuration.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/nginx/sites-available/blog.otakism.com</span><br></pre></td></tr></table></figure><p>With the following content.</p><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">80</span>;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">    <span class="attribute">listen</span> [::]:<span class="number">443</span> ssl;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">server_name</span> blog.otakism.com;</span><br><span class="line">    <span class="attribute">root</span> /var/www/wordpress;</span><br><span class="line">    <span class="attribute">charset</span> utf-<span class="number">8</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">index</span> index.php index.html;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /index.php?<span class="variable">$args</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> = /favicon.ico &#123;</span><br><span class="line">        <span class="attribute">log_not_found</span> <span class="literal">off</span>;</span><br><span class="line">        <span class="attribute">access_log</span> <span class="literal">off</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ \.php$</span> &#123;</span><br><span class="line">        <span class="attribute">fastcgi_intercept_errors</span> <span class="literal">on</span>;</span><br><span class="line">        <span class="attribute">fastcgi_index</span> index.php;</span><br><span class="line">        <span class="attribute">fastcgi_pass</span> <span class="number">127.0.0.1:9000</span>;</span><br><span class="line">        <span class="attribute">fastcgi_param</span> SCRIPT_FILENAME <span class="variable">$document_root</span><span class="variable">$fastcgi_script_name</span>;</span><br><span class="line">        <span class="attribute">include</span> fastcgi_params;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~ /\.</span> &#123;</span><br><span class="line">        <span class="attribute">deny</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">location</span> <span class="regexp">~* /(?:uploads|files)/.*\.php$</span> &#123;</span><br><span class="line">        <span class="attribute">deny</span> all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">ssh_client_certificate</span> /etc/nginx/ssl/cloudflare.pem;</span><br><span class="line">    <span class="attribute">ssl_verify_client</span> <span class="literal">on</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">ssl</span> <span class="literal">on</span>;</span><br><span class="line">    <span class="attribute">ssl_certificate</span> /etc/nginx/ssl/otakism.crt.pem;</span><br><span class="line">    <span class="attribute">ssl_certificate_key</span> /etc/nginx/ssh/otakism.key.pem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Simlink the configuration file to <code>sites-enabled</code>.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ln -s /etc/nginx/sites-available/blog.otakism.com /etc/nginx/sites-enabled/blog.otakism.com</span><br></pre></td></tr></table></figure><p>Restart nginx.</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure><h1 id="Gotchas"><a href="#Gotchas" class="headerlink" title="Gotchas"></a>Gotchas</h1><p>Make sure EC2 can talk to RDS. Set up the RDS security group to allow inbound TCP request to the db port from the EC2 host.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;I recently installed wordpress on my EC2 host. Regret a lot that I didn’t note down the steps right away. Now I have to rely on my poor g
+      
+    
+    </summary>
+    
+    
+      <category term="Nginx" scheme="http://artifact.me/tags/nginx/"/>
+    
+      <category term="AWS" scheme="http://artifact.me/tags/aws/"/>
+    
+      <category term="EC2" scheme="http://artifact.me/tags/ec2/"/>
+    
+      <category term="RDS" scheme="http://artifact.me/tags/rds/"/>
+    
+      <category term="Wordpress" scheme="http://artifact.me/tags/wordpress/"/>
+    
+      <category term="PHP" scheme="http://artifact.me/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>Install Ghost v1.x on Heroku</title>
@@ -363,9 +396,9 @@
     </summary>
     
     
-      <category term="Nginx" scheme="http://artifact.me/tags/nginx/"/>
-    
       <category term="Ghost" scheme="http://artifact.me/tags/ghost/"/>
+    
+      <category term="Nginx" scheme="http://artifact.me/tags/nginx/"/>
     
       <category term="Ubuntu" scheme="http://artifact.me/tags/ubuntu/"/>
     
